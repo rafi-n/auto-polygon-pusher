@@ -4,7 +4,7 @@ from write.logger import *
 
 # A cell is a collection of objects: layers and other cells
 class Cell:
-    """Represents a cell (collection of objects)"""
+    '''Represents a cell (collection of objects)'''
     # Each cell has a bare minimum of the following properties
     def __init__(self, name, objects, origin, orient, bbox, path):
         log = logging.getLogger()
@@ -61,7 +61,7 @@ class Cell:
 
 # A parameterized cell (PCell) is a special type of cell...
 class PCell(Cell):
-    """Represents a parameterized cell"""
+    '''Represents a parameterized cell'''
     def __init__(self, name, objects, origin, orient, bbox, path):
         log = logging.getLogger()
         Cell.__init__(self, name, objects, origin, orient, bbox, path)

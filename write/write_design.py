@@ -4,7 +4,7 @@ from write.logger import *
 
 # Save a cell as a pickled file
 def write_design(cell):
-    file_ext = ".oic"
+    file_ext = '.oic'
     file=''
     log = logging.getLogger()
 
