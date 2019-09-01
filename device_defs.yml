@@ -1,0 +1,110 @@
+---
+# Test device definition by layer intersection
+tech_node: ACME Infinite Yield Semi
+version: 1.2a
+notes: Wile E Coyote
+all_layers:
+  - SU drawing # 0
+  - PO drawing # 1
+  - OD drawing # 2
+  - NP drawing # 3
+  - PP drawing # 4
+  - NW drawing # 5
+M:
+  name: mosfet
+  nmos:
+    # Order of the following layers is important!
+    parts:
+      gate:
+        # intersect is a list of layers that should intersect
+        intersect:
+          - 0
+          - 1
+          - 2
+          - 3
+        # extend is read as: extend layer1 [north/east/south/west] wrt. layer2
+        # i.e. 0 north 1 == "extend PO drawing north wrt. OD drawing"
+        extend:
+          - 1 north 2
+          - 1 south 2
+          - 3 north 1
+          - 3 south 1
+          - 3 east 2
+          - 3 west 2
+      drain:
+        extend:
+          - 2 east 1
+          - 3 east 2
+          - 3 north 2
+          - 3 west 2
+          - 3 south 2
+      source:
+        extend:
+          - 2 west 1
+          - 3 west 2
+          - 3 north 2
+          - 3 east 2
+          - 3 south 2
+      bulk:
+        extend:
+          - 0 north 3
+          - 0 south 3
+          - 0 east 3
+          - 0 west 3
+  pmos:
+    # Order of the following layers is important!
+    parts:
+      gate:
+        intersect:
+          - 0
+          - 1
+          - 2
+          - 4
+          - 5
+        extend:
+          - 1 north 2
+          - 1 south 2
+          - 4 north 1
+          - 4 south 1
+          - 4 east 2
+          - 4 west 2
+      drain:
+        extend:
+          - 2 east 1
+          - 4 east 2
+          - 4 north 2
+          - 4 west 2
+          - 4 south 2
+          - 5 east 2
+          - 5 north 2
+          - 5 west 2
+          - 5 south 2
+      source:
+        extend:
+          - 2 west 1
+          - 4 west 2
+          - 4 north 2
+          - 4 west 2
+          - 4 south 2
+          - 5 east 2
+          - 5 north 2
+          - 5 west 2
+          - 5 south 2
+      implant:
+        - 2 extend 0 north
+        - 2 extend 0 south
+        - 2 extend 0 east
+        - 2 extend 0 west
+        - 2 extend 1 north
+        - 2 extend 1 south
+        - 2 extend 1 east
+        - 2 extend 1 west
+      bulk:
+        - 3 extend 0 north
+        - 3 extend 0 south
+        - 3 extend 0 east
+        - 3 extend 0 west
+        - 3 extend 1 north
+        - 3 extend 1 south
+        - 3 extend 1 east
+        - 3 extend 1 west

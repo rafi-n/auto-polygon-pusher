@@ -1,0 +1,131 @@
+---
+# Test made up rule file for geometry development
+# north and east are positive values
+tech_node: ACME Infinite Yield Semi
+version: 1.2a
+notes: Wile E Coyote
+unit_length: u
+layer:
+  SU drawing:
+    number: 0.0
+    mp: None
+    direction: any
+    width:
+      allowed:
+        - 0.0
+        - 100.0
+      min: 0.0
+      max: 100.0
+    extend:
+      NP drawing:
+        north: 0.5
+        south: -0.5
+        east: 0.5
+        west: -0.5
+    surround:
+      - ALL_LAYERS
+  OD drawing:
+    number: 2.0
+    mp: None
+    direction: horizontal
+    width:
+      allowed:
+        - 0.11
+        - 1.0
+      min: 0.11
+      max: 1.0
+    extend:
+      PO drawing:
+        north: 0.0
+        south: -0.0
+        east: 2.0
+        west: -2.0
+  OD dummy:
+    number: 2.1
+    mp: None
+    direction: horizontal
+    width:
+      allowed:
+        - 0.11
+        - 1.0
+      min: 0.11
+      max: 1.0
+    extend:
+      PO dummy:
+        north: 0.0
+        south: -0.0
+        east: 0.057
+        west: -0.057
+  PO drawing:
+    number: 1.0
+    direction: vertical
+    mp: None
+    width:
+      allowed:
+        - 0.008
+        - 0.1
+        - 1.0
+      min: 0.008
+      max: 1.0
+    extend:
+      OD drawing:
+        north: 1.0
+        south: -1.0
+        east: 0.0
+        west: -0.0
+  PO dummy:
+    number: 1.1
+    mp: None
+    direction: vertical
+    width:
+      allowed:
+        - 0.008
+        - 0.1
+      min: 0.008
+      max: 1.0
+    extend:
+      OD dummy:
+        north: 0.01
+        south: -0.01
+        east: 0.0
+        west: -0.0
+  NP drawing:
+    number: 3.0
+    mp: None
+    direction: any
+    width:
+      allowed:
+        -
+      min: 0.1
+      max: 10.0
+    extend:
+      PO drawing:
+        north: 0.5
+        south: -0.5
+        east: 0.1
+        west: -0.1
+      OD drawing:
+        north: 0.1
+        south: -0.1
+        east: 0.5
+        west: -0.5
+  PP drawing:
+    number: 4.0
+    mp: None
+    direction: any
+    width:
+      allowed:
+        -
+      min: 0.16
+      max: 1.0
+    extend:
+      PO drawing:
+        north: 0.06
+        south: -0.06
+        east: 0.1
+        west: -0.1
+      OD drawing:
+        north: 0.1
+        south: -0.1
+        east: 0.1
+        west: -0.1

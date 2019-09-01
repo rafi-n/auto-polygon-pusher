@@ -3,12 +3,14 @@ import logging
 from write.logger import *
 
 class GenericLayer:
-    """Represents any possible layer"""
+    '''Represents any possible layer'''
+    log = logging.getLogger()
     def __init__(self, name, num, purpose, points):
         self.name = name
         self.num = num
         self.purpose = purpose
         self.points = points
+        log.info("GenericLayer: {} {} {} {}".format(name, num, purpose, points))
 
     def tell(self):
         print("\t=== Layer Info ===\n\
@@ -21,7 +23,7 @@ class GenericLayer:
         return json.dumps(self.__dict__)
 
 class MaskLayer(GenericLayer):
-    """Represents a mask layer"""
+    '''Represents a mask layer'''
     log = logging.getLogger()
     def __init__(self, name, num, purpose, points, stack, multi_pattern, net,\
     dir, volt_hi, volt_lo):
@@ -47,7 +49,7 @@ class MaskLayer(GenericLayer):
         )
 
 class CadLayer(GenericLayer):
-    """Represents a CAD layer"""
+    '''Represents a CAD layer'''
     log = logging.getLogger()
     def __init__(self, name, num, purpose, points):
         GenericLayer.__init__(self, name, num, purpose, points)
