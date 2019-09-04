@@ -180,9 +180,12 @@ class FormedDevice(GenericDevice):
 
     def create_extending_layers(self, req_layers, instructions, rules, params, layers, net_index):
         mask_layers_ext = []
+        # TODO: if extend_layer and ref_layer are the same on separate loops, create only 1 mask_layers_ext
+        # TODO: only need extend_layer since all directions are accounted for in apply_transform
+        # this follows the todo in device_defs file
         for instruction in instructions:
             extend_layer = req_layers[int(instruction.split()[0])]
-            direction = instruction.split()[1]
+            # direction = instruction.split()[1]
             ref_layer = req_layers[int(instruction.split()[2])]
             points = self.apply_transform(rules['layer'][extend_layer]['extend'][ref_layer], ref_layer, extend_layer, layers)
             mask_layers_ext.append(MaskLayer(extend_layer, rules['layer'][extend_layer]['number'],\
